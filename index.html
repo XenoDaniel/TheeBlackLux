@@ -1715,12 +1715,18 @@
 
 <!-- Firebase Web SDKs -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+  import { 
+    getFirestore, 
+    collection, 
+    onSnapshot, 
+    query, 
+    orderBy 
+  } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-  // Your same Firebase configuration object
+  // Use the exact same Firebase configuration as your Admin console
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyDBnWWEWDJlP05VioBiTYWQuYjOCe_4APU",
     authDomain: "theeblacklux.firebaseapp.com",
     projectId: "theeblacklux",
     storageBucket: "theeblacklux.firebasestorage.app",
@@ -1729,38 +1735,27 @@
     measurementId: "G-6HE1BZQ3VZ"
   };
 
-  // Initialize Firebase and Firestore
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Function to pull products from Firestore and render them on the store page
-  function loadProducts(db) {
-    const container = document.getElementById('products-container'); // Change to your HTML grid ID
-
-    // onSnapshot updates your store automatically whenever you edit/add a product in admin!
-    onSnapshot(collection(db, "products"), (snapshot) => {
-      container.innerHTML = ""; // Clear existing static/demo cards
-
-      snapshot.forEach((doc) => {
-        const product = doc.data();
-        
-        // Build your HTML product card dynamically
-        const card = `
-          <div class="product-card">
-            <img src="${product.imageUrl || 'placeholder.jpg'}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p class="price">$${product.price}</p>
-            <button onclick="addToCart('${doc.id}')">Add to Cart</button>
-          </div>
-        `;
-
-        container.innerHTML += card;
-      });
+  // Listen for real-time changes to the 'products' collection
+  const productsQuery = query(collection(db, "products"), orderBy("createdAt", "desc"));
+  
+  onSnapshot(productsQuery, (snapshot) => {
+    const firebaseProducts = [];
+    snapshot.forEach((doc) => {
+      firebaseProducts.push({ id: doc.id, ...doc.data() });
     });
-  }
-
-  // Load products when the page opens
-  loadProducts(db);
+    
+    // Update global products array with Firebase data
+    if (firebaseProducts.length > 0) {
+      window.products = firebaseProducts;
+      // Re-render products with current filters
+      if (typeof renderProducts === 'function') {
+        renderProducts();
+      }
+    }
+  });
 </script>
 </body>
 </html>
