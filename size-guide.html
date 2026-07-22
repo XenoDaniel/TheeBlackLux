@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Size Guide — THEEBLACK•LUX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/fontsource/css/playfair-display@latest/index.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/index.css" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f4e4c1;
+    --gold-dark: #b8941f;
+    --white: #ffffff;
+    --cream: #faf8f5;
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 36px;
+  }
+  
+  [data-theme="light"] {
+    --bg-primary: #faf8f5;
+    --bg-secondary: #f5f0e8;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --text-primary: #0a0a0a;
+    --text-secondary: #666;
+    --border: rgba(212, 175, 55, 0.25);
+    --shadow: rgba(212, 175, 55, 0.15);
+    --shadow-heavy: rgba(0, 0, 0, 0.08);
+    --table-header: rgba(212, 175, 55, 0.1);
+    --table-row-alt: rgba(212, 175, 55, 0.04);
+  }
+  
+  [data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-card: rgba(30, 30, 30, 0.75);
+    --bg-glass: rgba(20, 20, 20, 0.7);
+    --text-primary: #ffffff;
+    --text-secondary: #aaa;
+    --border: rgba(212, 175, 55, 0.3);
+    --shadow: rgba(0, 0, 0, 0.5);
+    --shadow-heavy: rgba(0, 0, 0, 0.4);
+    --table-header: rgba(212, 175, 55, 0.15);
+    --table-row-alt: rgba(255, 255, 255, 0.03);
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.6s ease, color 0.6s ease;
+    min-height: 100vh;
+  }
+  
+  .serif { font-family: 'Playfair Display', serif; }
+  
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+  
+  @keyframes floatIn {
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes scaleIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    0% { transform: translateX(-30px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes fadeUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  .float-in { animation: floatIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .scale-in { animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .slide-in { animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .fade-up { animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  
+  /* Navbar */
+  nav {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin: 10px 12px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 32px var(--shadow-heavy), inset 0 1px 0 rgba(255,255,255,0.15);
+    gap: 6px;
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .logo:hover { transform: scale(1.05); }
+  .logo span { color: var(--gold); }
+  
+  .nav-actions {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .icon-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    color: var(--text-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  
+  .icon-btn:hover, .icon-btn:active { 
+    color: var(--gold);
+    transform: scale(1.08);
+  }
+  
+  .back-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    color: var(--text-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  
+  .back-btn:hover { color: var(--gold); transform: scale(1.08); }
+  
+  /* Hero */
+  .hero {
+    position: relative;
+    height: 50vh;
+    min-height: 380px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 0 12px 20px;
+    border-radius: var(--radius-xl);
+  }
+  
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/13ae33620-9df6-4617-beb5-c2bd3378d0df.png') center/cover;
+    filter: brightness(0.5);
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 100%);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 28px;
+    max-width: 700px;
+    color: white;
+  }
+  
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 600;
+    animation: slideIn 0.8s ease-out 0.2s backwards;
+  }
+  
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 7vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    animation: floatIn 1s ease-out 0.4s backwards;
+  }
+  
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    animation: fadeUp 0.8s ease-out 0.6s backwards;
+  }
+  
+  /* Sections */
+  section { padding: 60px 16px; }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+  }
+  
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+  
+  .section-title em { font-style: italic; color: var(--gold); }
+  
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-weight: 300;
+  }
+  
+  /* Category Tabs */
+  .size-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    padding: 4px;
+    scrollbar-width: none;
+  }
+  
+  .size-tabs::-webkit-scrollbar { display: none; }
+  
+  .size-tab {
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .size-tab.active, .size-tab:hover { 
+    color: var(--black);
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  
+  /* Size Guide Sections */
+  .size-section {
+    display: none;
+    animation: fadeUp 0.5s ease-out;
+  }
+  
+  .size-section.active { display: block; }
+  
+  .size-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  
+  .size-section-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  
+  /* Size Cards */
+  .size-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px var(--shadow-heavy), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  
+  .size-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .size-card-title .icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    color: var(--black);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  
+  /* Tables */
+  .size-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  
+  .size-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+  }
+  
+  .size-table thead {
+    background: var(--table-header);
+  }
+  
+  .size-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .size-table td {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .size-table tbody tr:last-child td { border-bottom: none; }
+  
+  .size-table tbody tr:nth-child(even) {
+    background: var(--table-row-alt);
+  }
+  
+  .size-table tbody tr:hover {
+    background: var(--table-header);
+  }
+  
+  .size-table .highlight {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  
+  /* Info Cards */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  
+  .info-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: 0 4px 16px var(--shadow-heavy);
+  }
+  
+  .info-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .info-card h4 .emoji {
+    font-size: 20px;
+  }
+  
+  .info-card p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .info-card li {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding: 4px 0 4px 20px;
+    position: relative;
+    font-weight: 300;
+  }
+  
+  .info-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  
+  /* Note Box */
+  .note-box {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  
+  .note-box p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+  
+  .note-box strong {
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+  
+  /* Measurement Guide */
+  .measure-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  
+  .measure-step {
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 4px 16px var(--shadow-heavy);
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--gold);
+    color: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  
+  .step-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  
+  .step-content p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: 40px 24px;
+    text-align: center;
+    margin: 40px 16px;
+  }
+  
+  .cta-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  
+  .cta-section p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    border-radius: var(--radius-md);
+  }
+  
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+  }
+  
+  .btn-primary:hover, .btn-primary:active {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+  
+  .btn-outline:hover, .btn-outline:active {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 50px 20px 24px;
+    border-top: 1px solid var(--border);
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto 40px;
+  }
+  
+  .footer-brand .logo { 
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  
+  .footer-col h4 {
+    color: var(--text-primary);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  
+  .footer-col a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+  
+  .footer-col a:hover { color: var(--gold); }
+  
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+  
+  /* Tablet+ */
+  @media (min-width: 768px) {
+    nav { margin: 16px 32px; padding: 16px 28px; }
+    .logo { font-size: 22px; }
+    .icon-btn, .back-btn { width: 42px; height: 42px; }
+    .hero { margin: 0 24px 24px; min-height: 420px; }
+    .hero-content { padding: 60px; }
+    section { padding: 80px 32px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .measure-steps { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .cta-section { margin: 60px 32px; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<!-- Navbar -->
+<nav>
+  <a href="index.html" class="back-btn" title="Back to Store" aria-label="Back">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  </a>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <div class="logo" onclick="window.location.href='index.html'">THEEBLACK<span>•</span>LUX</div>
+    <div class="nav-links"></div>
+  </div>
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
+      <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">— Find Your Perfect Fit</div>
+    <h1 class="hero-title">The <em>Size Guide</em></h1>
+    <p class="hero-desc">Navigate USA, UK, and Nigerian sizing with confidence. Our comprehensive guide ensures every piece fits you flawlessly.</p>
+  </div>
+</section>
+
+<!-- Size Guide Content -->
+<section>
+  <div class="section-header">
+    <span class="section-tag">International Sizing</span>
+    <h2 class="section-title">Choose Your <em>Category</em></h2>
+    <p class="section-sub">Select a category below to view detailed size conversions</p>
+  </div>
+  
+  <!-- Category Tabs -->
+  <div class="size-tabs">
+    <button class="size-tab active" onclick="showSection('footwear', this)">👟 Footwear</button>
+    <button class="size-tab" onclick="showSection('clothing', this)">👕 Clothing</button>
+    <button class="size-tab" onclick="showSection('accessories', this)"> Accessories</button>
+    <button class="size-tab" onclick="showSection('bags', this)">👜 Bags</button>
+    <button class="size-tab" onclick="showSection('measure', this)">📏 How to Measure</button>
+  </div>
+  
+  <!-- FOOTWEAR SECTION -->
+  <div class="size-section active" id="section-footwear">
+    <h3 class="size-section-title">Footwear Size Guide</h3>
+    <p class="size-section-sub">Unisex sneakers & corporate shoes — conversions across USA, UK, EU, and Nigerian sizing</p>
+    
+    <div class="note-box">
+      <p><strong>🇳🇬 Nigerian Sizing Note:</strong> Nigeria primarily uses EU sizing for footwear. The "Nigerian Size" column reflects the EU equivalent commonly used in Nigerian stores.</p>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">👟</div>
+        <div>
+          <div>Sneakers Size Chart</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Unisex — Nike, Adidas, Jordans & more</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>USA</th>
+              <th>UK</th>
+              <th>EU / Nigeria</th>
+              <th>Foot Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>6</td><td>5.5</td><td class="highlight">39</td><td>24.5</td></tr>
+            <tr><td>6.5</td><td>6</td><td class="highlight">39.5</td><td>25</td></tr>
+            <tr><td>7</td><td>6</td><td class="highlight">40</td><td>25</td></tr>
+            <tr><td>7.5</td><td>6.5</td><td class="highlight">40.5</td><td>25.5</td></tr>
+            <tr><td>8</td><td>7</td><td class="highlight">41</td><td>26</td></tr>
+            <tr><td>8.5</td><td>7.5</td><td class="highlight">42</td><td>26.5</td></tr>
+            <tr><td>9</td><td>8</td><td class="highlight">42.5</td><td>27</td></tr>
+            <tr><td>9.5</td><td>8.5</td><td class="highlight">43</td><td>27.5</td></tr>
+            <tr><td>10</td><td>9</td><td class="highlight">44</td><td>28</td></tr>
+            <tr><td>10.5</td><td>9.5</td><td class="highlight">44.5</td><td>28.5</td></tr>
+            <tr><td>11</td><td>10</td><td class="highlight">45</td><td>29</td></tr>
+            <tr><td>12</td><td>11</td><td class="highlight">46</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">👞</div>
+        <div>
+          <div>Corporate / Formal Shoes</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Oxfords, Loafers & Dress Shoes</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>USA</th>
+              <th>UK</th>
+              <th>EU / Nigeria</th>
+              <th>Foot Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>7</td><td>6</td><td class="highlight">40</td><td>25</td></tr>
+            <tr><td>7.5</td><td>6.5</td><td class="highlight">40.5</td><td>25.5</td></tr>
+            <tr><td>8</td><td>7</td><td class="highlight">41</td><td>26</td></tr>
+            <tr><td>8.5</td><td>7.5</td><td class="highlight">42</td><td>26.5</td></tr>
+            <tr><td>9</td><td>8</td><td class="highlight">42.5</td><td>27</td></tr>
+            <tr><td>9.5</td><td>8.5</td><td class="highlight">43</td><td>27.5</td></tr>
+            <tr><td>10</td><td>9</td><td class="highlight">44</td><td>28</td></tr>
+            <tr><td>10.5</td><td>9.5</td><td class="highlight">44.5</td><td>28.5</td></tr>
+            <tr><td>11</td><td>10</td><td class="highlight">45</td><td>29</td></tr>
+            <tr><td>12</td><td>11</td><td class="highlight">46</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">
+        <p><strong>💡 Pro Tip:</strong> Formal shoes tend to run slightly narrow. If you're between sizes, we recommend sizing up half a size for comfort.</p>
+      </div>
+    </div>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <h4><span class="emoji">📐</span> How to Measure Your Foot</h4>
+        <ul>
+          <li>Place your foot on a piece of paper</li>
+          <li>Mark the heel and longest toe</li>
+          <li>Measure the distance in cm</li>
+          <li>Compare with the chart above</li>
+          <li>Measure both feet — use the larger size</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4><span class="emoji">⚠️</span> Important Notes</h4>
+        <ul>
+          <li>Sneakers often run half-size large</li>
+          <li>Measure feet at the end of the day</li>
+          <li>Wear the socks you'll use with the shoes</li>
+          <li>Width matters — wide feet may need +0.5</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- CLOTHING SECTION -->
+  <div class="size-section" id="section-clothing">
+    <h3 class="size-section-title">Men's Clothing Size Guide</h3>
+    <p class="size-section-sub">Hoodies, shirts, tees, joggers, baggy jeans & suits — USA, UK, and Nigerian sizing</p>
+    
+    <div class="note-box">
+      <p><strong>🇳🇬 Nigerian Sizing Note:</strong> Nigerian clothing typically follows UK sizing. A Nigerian "Large" = UK "Large" = USA "Large". The key difference is in numerical sizing (e.g., suits).</p>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">👕</div>
+        <div>
+          <div>Tops Size Chart</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Tees, Shirts & Hoodies</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>USA</th>
+              <th>UK</th>
+              <th>Nigeria</th>
+              <th>Chest (in)</th>
+              <th>Chest (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">S</td><td>34-36</td><td>34-36</td><td>34-36</td><td>36-38</td><td>91-97</td></tr>
+            <tr><td class="highlight">M</td><td>38-40</td><td>38-40</td><td>38-40</td><td>40-42</td><td>102-107</td></tr>
+            <tr><td class="highlight">L</td><td>42-44</td><td>42-44</td><td>42-44</td><td>44-46</td><td>112-117</td></tr>
+            <tr><td class="highlight">XL</td><td>46-48</td><td>46-48</td><td>46-48</td><td>48-50</td><td>122-127</td></tr>
+            <tr><td class="highlight">XXL</td><td>50-52</td><td>50-52</td><td>50-52</td><td>52-54</td><td>132-137</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">👖</div>
+        <div>
+          <div>Bottoms Size Chart</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Baggy Jeans & Joggers</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>USA</th>
+              <th>UK</th>
+              <th>Nigeria</th>
+              <th>Waist (in)</th>
+              <th>Waist (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">28</td><td>28</td><td>28</td><td>28</td><td>28</td><td>71</td></tr>
+            <tr><td class="highlight">30</td><td>30</td><td>30</td><td>30</td><td>30</td><td>76</td></tr>
+            <tr><td class="highlight">32</td><td>32</td><td>32</td><td>32</td><td>32</td><td>81</td></tr>
+            <tr><td class="highlight">34</td><td>34</td><td>34</td><td>34</td><td>34</td><td>86</td></tr>
+            <tr><td class="highlight">36</td><td>36</td><td>36</td><td>36</td><td>36</td><td>91</td></tr>
+            <tr><td class="highlight">38</td><td>38</td><td>38</td><td>38</td><td>38</td><td>97</td></tr>
+            <tr><td class="highlight">40</td><td>40</td><td>40</td><td>40</td><td>40</td><td>102</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">
+        <p><strong>💡 Baggy Fit Note:</strong> Our baggy jeans are designed with a relaxed fit. If you prefer a tighter fit, consider sizing down one size.</p>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">🤵</div>
+        <div>
+          <div>Suits & Blazers</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Formal & Corporate Wear</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>USA</th>
+              <th>UK</th>
+              <th>Nigeria</th>
+              <th>Chest (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">36</td><td>36</td><td>36</td><td>36</td><td>36</td></tr>
+            <tr><td class="highlight">38</td><td>38</td><td>38</td><td>38</td><td>38</td></tr>
+            <tr><td class="highlight">40</td><td>40</td><td>40</td><td>40</td><td>40</td></tr>
+            <tr><td class="highlight">42</td><td>42</td><td>42</td><td>42</td><td>42</td></tr>
+            <tr><td class="highlight">44</td><td>44</td><td>44</td><td>44</td><td>44</td></tr>
+            <tr><td class="highlight">46</td><td>46</td><td>46</td><td>46</td><td>46</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <h4><span class="emoji">📏</span> Chest Measurement</h4>
+        <p>Measure around the fullest part of your chest, keeping the tape level and relaxed. Don't pull tight.</p>
+      </div>
+      <div class="info-card">
+        <h4><span class="emoji">📐</span> Waist Measurement</h4>
+        <p>Measure around your natural waistline (above belly button). Keep one finger between tape and body.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ACCESSORIES SECTION -->
+  <div class="size-section" id="section-accessories">
+    <h3 class="size-section-title">Accessories Size Guide</h3>
+    <p class="size-section-sub">Belts, wrist watches & neckpieces — find your perfect fit</p>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon"></div>
+        <div>
+          <div>Belt Size Chart</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Leather & Designer Belts</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Belt Size</th>
+              <th>USA</th>
+              <th>UK</th>
+              <th>Nigeria</th>
+              <th>Waist (in)</th>
+              <th>Waist (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">30</td><td>30</td><td>30</td><td>30</td><td>28-30</td><td>71-76</td></tr>
+            <tr><td class="highlight">32</td><td>32</td><td>32</td><td>32</td><td>30-32</td><td>76-81</td></tr>
+            <tr><td class="highlight">34</td><td>34</td><td>34</td><td>34</td><td>32-34</td><td>81-86</td></tr>
+            <tr><td class="highlight">36</td><td>36</td><td>36</td><td>36</td><td>34-36</td><td>86-91</td></tr>
+            <tr><td class="highlight">38</td><td>38</td><td>38</td><td>38</td><td>36-38</td><td>91-97</td></tr>
+            <tr><td class="highlight">40</td><td>40</td><td>40</td><td>40</td><td>38-40</td><td>97-102</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">
+        <p><strong>💡 Belt Tip:</strong> Order 1-2 inches larger than your pant waist size for the best fit. A size 34 belt fits a 32-33 inch waist perfectly.</p>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">⌚</div>
+        <div>
+          <div>Wrist Watch Size Guide</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Case Size vs Wrist Size</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Wrist Size</th>
+              <th>Recommended Case</th>
+              <th>Band Length</th>
+              <th>Fit Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">6" (15cm)</td><td>36-38mm</td><td>Small</td><td>Petite</td></tr>
+            <tr><td class="highlight">6.5" (16.5cm)</td><td>38-40mm</td><td>Small-Med</td><td>Slender</td></tr>
+            <tr><td class="highlight">7" (18cm)</td><td>40-42mm</td><td>Medium</td><td>Average</td></tr>
+            <tr><td class="highlight">7.5" (19cm)</td><td>42-44mm</td><td>Medium-Lg</td><td>Athletic</td></tr>
+            <tr><td class="highlight">8" (20cm)</td><td>44-46mm</td><td>Large</td><td>Large</td></tr>
+            <tr><td class="highlight">8.5"+ (21.5cm+)</td><td>46mm+</td><td>X-Large</td><td>Extra Large</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">📿</div>
+        <div>
+          <div>Neckpiece / Chain Length Guide</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Chains, Pendants & Necklaces</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Length</th>
+              <th>Sits At</th>
+              <th>Best For</th>
+              <th>Style</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">18"</td><td>Base of neck</td><td>Chokers, close fit</td><td>Tight</td></tr>
+            <tr><td class="highlight">20"</td><td>Collarbone</td><td>Most pendants</td><td>Classic</td></tr>
+            <tr><td class="highlight">22"</td><td>Upper chest</td><td>Statement pieces</td><td>Standard</td></tr>
+            <tr><td class="highlight">24"</td><td>Chest</td><td>Larger pendants</td><td>Relaxed</td></tr>
+            <tr><td class="highlight">26-30"</td><td>Mid-chest</td><td>Layering, hip-hop</td><td>Long</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <h4><span class="emoji"></span> Measure Your Wrist</h4>
+        <p>Wrap a soft tape measure around your wrist just below the wrist bone. Add 1cm for a comfortable fit.</p>
+      </div>
+      <div class="info-card">
+        <h4><span class="emoji">👔</span> Belt Measurement</h4>
+        <p>Measure from the buckle end to the hole you currently use. This is your ideal belt size.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- BAGS SECTION -->
+  <div class="size-section" id="section-bags">
+    <h3 class="size-section-title">Bags Size Guide</h3>
+    <p class="size-section-sub">Cross bags, backpacks & travelling bags — dimensions & capacity</p>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">👜</div>
+        <div>
+          <div>Cross Bags</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Shoulder & Messenger Bags</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Dimensions (cm)</th>
+              <th>Capacity</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Small</td><td>20 × 15 × 8</td><td>2-4L</td><td>Phone, cards, keys</td></tr>
+            <tr><td class="highlight">Medium</td><td>25 × 20 × 10</td><td>5-8L</td><td>Phone, wallet, small items</td></tr>
+            <tr><td class="highlight">Large</td><td>30 × 25 × 12</td><td>10-15L</td><td>Tablet, essentials</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">🎒</div>
+        <div>
+          <div>Backpacks</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Daily & Travel Backpacks</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Dimensions (cm)</th>
+              <th>Capacity</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Compact</td><td>40 × 28 × 15</td><td>15-20L</td><td>Daily commute</td></tr>
+            <tr><td class="highlight">Medium</td><td>48 × 32 × 18</td><td>20-30L</td><td>Laptop + essentials</td></tr>
+            <tr><td class="highlight">Large</td><td>55 × 35 × 22</td><td>30-40L</td><td>Travel, gym, school</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="size-card">
+      <div class="size-card-title">
+        <div class="icon">🧳</div>
+        <div>
+          <div>Travelling Bags</div>
+          <div style="font-size: 11px; color: var(--text-secondary); font-weight: 400; font-family: 'Inter', sans-serif;">Duffle & Weekender Bags</div>
+        </div>
+      </div>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Dimensions (cm)</th>
+              <th>Capacity</th>
+              <th>Trip Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Medium</td><td>50 × 28 × 25</td><td>40-50L</td><td>2-3 days</td></tr>
+            <tr><td class="highlight">Large</td><td>60 × 32 × 30</td><td>60-80L</td><td>4-7 days</td></tr>
+            <tr><td class="highlight">X-Large</td><td>70 × 35 × 35</td><td>80-100L</td><td>1+ week</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <h4><span class="emoji">️</span> Carry-On Limits</h4>
+        <p>Most airlines allow carry-on bags up to 56 × 36 × 23 cm (22 × 14 × 9 inches). Our medium backpacks fit this perfectly.</p>
+      </div>
+      <div class="info-card">
+        <h4><span class="emoji">💼</span> Laptop Compatibility</h4>
+        <p>13" laptops fit in compact bags. 15" laptops need medium+. 17" laptops require large backpacks.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- HOW TO MEASURE SECTION -->
+  <div class="size-section" id="section-measure">
+    <h3 class="size-section-title">How to Measure Yourself</h3>
+    <p class="size-section-sub">Follow these simple steps to get accurate measurements every time</p>
+    
+    <div class="note-box">
+      <p><strong>📌 Before You Start:</strong> Wear fitted clothing (not bulky). Use a soft measuring tape. Stand naturally — don't pull the tape too tight. Have a friend help if possible for best accuracy.</p>
+    </div>
+    
+    <div class="measure-steps">
+      <div class="measure-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Chest / Bust</h4>
+          <p>Wrap the tape around the fullest part of your chest, under your arms. Keep the tape parallel to the floor. Breathe normally — don't puff out your chest.</p>
+        </div>
+      </div>
+      
+      <div class="measure-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Waist</h4>
+          <p>Find your natural waistline (above your belly button, below your ribs). Wrap the tape around comfortably. You should be able to fit one finger between the tape and your body.</p>
+        </div>
+      </div>
+      
+      <div class="measure-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Hips</h4>
+          <p>Stand with feet together. Measure around the fullest part of your hips and buttocks. Keep the tape level all the way around.</p>
+        </div>
+      </div>
+      
+      <div class="measure-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Inseam (for pants)</h4>
+          <p>Measure from the crotch seam down the inside of your leg to where you want the pants to end. For full length, measure to the ankle bone.</p>
+        </div>
+      </div>
+      
+      <div class="measure-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Foot Length</h4>
+          <p>Stand on a piece of paper. Mark your heel and longest toe. Measure the distance in centimeters. Measure both feet and use the larger measurement.</p>
+        </div>
+      </div>
+      
+      <div class="measure-step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h4>Wrist (for watches)</h4>
+          <p>Wrap the tape just below your wrist bone (where you'd wear a watch). Add 1cm for comfort. This is your wrist circumference.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="info-grid" style="margin-top: 32px;">
+      <div class="info-card">
+        <h4><span class="emoji">✅</span> Best Practices</h4>
+        <ul>
+          <li>Measure in the morning for most accurate results</li>
+          <li>Use a soft, flexible measuring tape</li>
+          <li>Don't hold your breath while measuring</li>
+          <li>Take each measurement twice to confirm</li>
+          <li>Write down measurements in cm AND inches</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4><span class="emoji">❌</span> Common Mistakes</h4>
+        <ul>
+          <li>Pulling the tape too tight</li>
+          <li>Measuring over bulky clothing</li>
+          <li>Not keeping tape parallel to floor</li>
+          <li>Measuring only one foot/hand</li>
+          <li>Guessing your size instead of measuring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<div class="cta-section">
+  <h3>Still Unsure About Your Size?</h3>
+  <p>Our team is here to help you find the perfect fit. Reach out on WhatsApp for personalized sizing advice.</p>
+  <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+    <a href="index.html#shop" class="btn btn-primary">Shop Now</a>
+    <a href="https://wa.me/2348139910002" class="btn btn-outline" target="_blank">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">THEEBLACK<span style="color: var(--gold);">•</span>LUX</div>
+      <p>Premium luxury fashion. Exclusive sneakers, clothing, bags, and accessories. Delivering excellence worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="index.html#shop">Footwears</a></li>
+        <li><a href="index.html#shop">Male Clothes</a></li>
+        <li><a href="index.html#shop">Bags</a></li>
+        <li><a href="index.html#shop">Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="size-guide.html">Size Guide</a></li>
+        <li><a href="faq.html#section-shipping">Shipping Info</a></li>
+        <li><a href="faq.html#section-returns">Returns</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Brand</h4>
+      <ul>
+        <li><a href="index.html#about">Our Story</a></li>
+        <li><a href="#">Authenticity</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="https://wa.me/2348139910002">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 THEEBLACK•LUX. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Theme management
+  function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theblacklux_theme', theme);
+    updateThemeIcon();
+  }
+  
+  function toggleTheme() {
+    const current = document.body.getAttribute('data-theme');
+    setTheme(current === 'light' ? 'dark' : 'light');
+  }
+  
+  function updateThemeIcon() {
+    const icon = document.getElementById('themeIcon');
+    const current = document.body.getAttribute('data-theme');
+    if (current === 'dark') {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    } else {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+    }
+  }
+  
+  // Section switching
+  function showSection(sectionId, btn) {
+    // Hide all sections
+    document.querySelectorAll('.size-section').forEach(s => s.classList.remove('active'));
+    // Show selected
+    document.getElementById('section-' + sectionId).classList.add('active');
+    // Update tabs
+    document.querySelectorAll('.size-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    // Smooth scroll to content
+    document.getElementById('section-' + sectionId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  
+  // Init
+  const storedTheme = localStorage.getItem('theblacklux_theme') || 'light';
+  setTheme(storedTheme);
+</script>
+</body>
+</html>

@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>FAQ — THEEBLACK•LUX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/fontsource/css/playfair-display@latest/index.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/index.css" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f4e4c1;
+    --gold-dark: #b8941f;
+    --white: #ffffff;
+    --cream: #faf8f5;
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 36px;
+  }
+  
+  [data-theme="light"] {
+    --bg-primary: #faf8f5;
+    --bg-secondary: #f5f0e8;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --text-primary: #0a0a0a;
+    --text-secondary: #666;
+    --border: rgba(212, 175, 55, 0.25);
+    --shadow: rgba(212, 175, 55, 0.15);
+    --shadow-heavy: rgba(0, 0, 0, 0.08);
+    --accordion-bg: rgba(212, 175, 55, 0.06);
+  }
+  
+  [data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-card: rgba(30, 30, 30, 0.75);
+    --bg-glass: rgba(20, 20, 20, 0.7);
+    --text-primary: #ffffff;
+    --text-secondary: #aaa;
+    --border: rgba(212, 175, 55, 0.3);
+    --shadow: rgba(0, 0, 0, 0.5);
+    --shadow-heavy: rgba(0, 0, 0, 0.4);
+    --accordion-bg: rgba(212, 175, 55, 0.08);
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.6s ease, color 0.6s ease;
+    min-height: 100vh;
+  }
+  
+  .serif { font-family: 'Playfair Display', serif; }
+  
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+  
+  @keyframes floatIn {
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes scaleIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    0% { transform: translateX(-30px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes fadeUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes expandIn {
+    0% { max-height: 0; opacity: 0; }
+    100% { max-height: 500px; opacity: 1; }
+  }
+  
+  .float-in { animation: floatIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .scale-in { animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .slide-in { animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .fade-up { animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  
+  /* Navbar */
+  nav {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin: 10px 12px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 32px var(--shadow-heavy), inset 0 1px 0 rgba(255,255,255,0.15);
+    gap: 6px;
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .logo:hover { transform: scale(1.05); }
+  .logo span { color: var(--gold); }
+  
+  .nav-actions {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .icon-btn, .back-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    color: var(--text-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  
+  .icon-btn:hover, .icon-btn:active, .back-btn:hover { 
+    color: var(--gold);
+    transform: scale(1.08);
+  }
+  
+  /* Hero */
+  .hero {
+    position: relative;
+    height: 50vh;
+    min-height: 380px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 0 12px 20px;
+    border-radius: var(--radius-xl);
+  }
+  
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/13ae33620-9df6-4617-beb5-c2bd3378d0df.png') center/cover;
+    filter: brightness(0.5);
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 100%);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 28px;
+    max-width: 700px;
+    color: white;
+  }
+  
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 600;
+    animation: slideIn 0.8s ease-out 0.2s backwards;
+  }
+  
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 7vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    animation: floatIn 1s ease-out 0.4s backwards;
+  }
+  
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    animation: fadeUp 0.8s ease-out 0.6s backwards;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    position: sticky;
+    top: 72px;
+    z-index: 90;
+    margin: 0 12px 24px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 16px var(--shadow-heavy);
+    transition: all 0.3s;
+  }
+  
+  .search-bar:focus-within {
+    border-color: var(--gold);
+    box-shadow: 0 4px 24px var(--shadow);
+  }
+  
+  .search-bar svg {
+    flex-shrink: 0;
+    color: var(--text-secondary);
+  }
+  
+  .search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    padding: 4px 0;
+  }
+  
+  .search-input::placeholder {
+    color: var(--text-secondary);
+  }
+  
+  .search-clear {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+  
+  .search-clear.show { display: flex; }
+  .search-clear:hover { color: var(--gold); }
+  
+  /* Sections */
+  section { padding: 60px 16px; }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+  }
+  
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+  
+  .section-title em { font-style: italic; color: var(--gold); }
+  
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-weight: 300;
+  }
+  
+  /* Category Tabs */
+  .faq-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    padding: 4px;
+    scrollbar-width: none;
+  }
+  
+  .faq-tabs::-webkit-scrollbar { display: none; }
+  
+  .faq-tab {
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .faq-tab.active, .faq-tab:hover { 
+    color: var(--black);
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  
+  /* FAQ Sections */
+  .faq-section {
+    display: none;
+    animation: fadeUp 0.5s ease-out;
+  }
+  
+  .faq-section.active { display: block; }
+  
+  .faq-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  
+  .faq-section-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  
+  /* Accordion */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .faq-item {
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--shadow-heavy);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .faq-item:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 32px var(--shadow);
+  }
+  
+  .faq-item.open {
+    border-color: var(--gold);
+    background: var(--accordion-bg);
+  }
+  
+  .faq-question {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  .faq-question h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+    flex: 1;
+  }
+  
+  .faq-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--gold);
+  }
+  
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+    padding: 0 24px;
+  }
+  
+  .faq-item.open .faq-answer {
+    max-height: 500px;
+    padding: 0 24px 20px;
+  }
+  
+  .faq-answer p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  
+  .faq-answer strong {
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+  
+  .faq-answer ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+  }
+  
+  .faq-answer li {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    padding: 4px 0 4px 20px;
+    position: relative;
+    font-weight: 300;
+  }
+  
+  .faq-answer li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  
+  /* No Results */
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    display: none;
+  }
+  
+  .no-results.show { display: block; }
+  
+  .no-results .emoji {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .no-results h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  
+  .no-results p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  
+  /* Note Box */
+  .note-box {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  
+  .note-box p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+  
+  .note-box strong {
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+  
+  /* Info Cards */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  
+  .info-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: 0 4px 16px var(--shadow-heavy);
+  }
+  
+  .info-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .info-card h4 .emoji {
+    font-size: 22px;
+  }
+  
+  .info-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .info-card li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding: 4px 0 4px 20px;
+    position: relative;
+    font-weight: 300;
+  }
+  
+  .info-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: 40px 24px;
+    text-align: center;
+    margin: 40px 16px;
+  }
+  
+  .cta-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  
+  .cta-section p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    border-radius: var(--radius-md);
+  }
+  
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+  }
+  
+  .btn-primary:hover, .btn-primary:active {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+  
+  .btn-outline:hover, .btn-outline:active {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 50px 20px 24px;
+    border-top: 1px solid var(--border);
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto 40px;
+  }
+  
+  .footer-brand .logo { 
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  
+  .footer-col h4 {
+    color: var(--text-primary);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  
+  .footer-col a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+  
+  .footer-col a:hover { color: var(--gold); }
+  
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+  
+  /* Tablet+ */
+  @media (min-width: 768px) {
+    nav { margin: 16px 32px; padding: 16px 28px; }
+    .logo { font-size: 22px; }
+    .icon-btn, .back-btn { width: 42px; height: 42px; }
+    .hero { margin: 0 24px 24px; min-height: 420px; }
+    .hero-content { padding: 60px; }
+    section { padding: 80px 32px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .cta-section { margin: 60px 32px; padding: 60px 40px; }
+    .search-bar { margin: 0 32px 24px; padding: 14px 22px; }
+    .faq-question { padding: 24px 28px; }
+    .faq-answer { padding: 0 28px; }
+    .faq-item.open .faq-answer { padding: 0 28px 24px; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<!-- Navbar -->
+<nav>
+  <a href="index.html" class="back-btn" title="Back to Store" aria-label="Back">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  </a>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <div class="logo" onclick="window.location.href='index.html'">THEEBLACK<span>•</span>LUX</div>
+    <div class="nav-links"></div>
+  </div>
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
+      <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">— We're Here to Help</div>
+    <h1 class="hero-title">Frequently Asked <em>Questions</em></h1>
+    <p class="hero-desc">Everything you need to know about shopping with THEEBLACK•LUX. Can't find what you're looking for? Reach out to us directly.</p>
+  </div>
+</section>
+
+<!-- Search -->
+<div class="search-bar">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="M21 21l-4.35-4.35"/>
+  </svg>
+  <input type="text" class="search-input" id="searchInput" placeholder="Search questions..." oninput="handleSearch(this.value)">
+  <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<!-- FAQ Content -->
+<section>
+  <div class="section-header">
+    <span class="section-tag">Help Center</span>
+    <h2 class="section-title">Browse by <em>Topic</em></h2>
+    <p class="section-sub">Select a category to find answers to common questions</p>
+  </div>
+  
+  <!-- Category Tabs -->
+  <div class="faq-tabs">
+    <button class="faq-tab active" onclick="showSection('all', this)">All Questions</button>
+    <button class="faq-tab" onclick="showSection('orders', this)">Orders</button>
+    <button class="faq-tab" onclick="showSection('shipping', this)">Shipping</button>
+    <button class="faq-tab" onclick="showSection('payments', this)">Payments</button>
+    <button class="faq-tab" onclick="showSection('returns', this)">Returns</button>
+    <button class="faq-tab" onclick="showSection('authenticity', this)">Authenticity</button>
+    <button class="faq-tab" onclick="showSection('sizing', this)">Sizing</button>
+    <button class="faq-tab" onclick="showSection('account', this)">Account</button>
+  </div>
+  
+  <div id="faqContainer">
+    
+    <!-- ORDERS SECTION -->
+    <div class="faq-section active" id="section-orders" data-category="orders">
+      <h3 class="faq-section-title">Orders & Purchasing</h3>
+      <p class="faq-section-sub">Everything about placing and managing your orders</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="how to place an order whatsapp">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How do I place an order?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Placing an order is simple! Browse our collection, select your items and sizes, add them to your bag, and click <strong>"Order via WhatsApp"</strong>. You'll be redirected to WhatsApp where you can confirm your order with our team. We'll respond within minutes during business hours.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="order confirmation tracking">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How will I know my order is confirmed?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Once you send your order via WhatsApp, our team will reply with an order confirmation including:</p>
+            <ul>
+              <li>Order summary with items and sizes</li>
+              <li>Total amount in Naira</li>
+              <li>Payment details</li>
+              <li>Estimated delivery timeline</li>
+            </ul>
+            <p style="margin-top: 12px;">Keep this confirmation for your records.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="can I cancel modify order">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Can I cancel or modify my order?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! You can cancel or modify your order <strong>within 2 hours</strong> of placing it, as long as it hasn't been shipped yet. Simply message us on WhatsApp with your order details and requested changes. After 2 hours, modifications may not be possible if the item is already being prepared for shipment.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="minimum order quantity">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Is there a minimum order quantity?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>No minimum order! You can purchase a single item or multiple pieces. However, orders above <strong>200,000</strong> qualify for free express shipping within Nigeria.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="out of stock item available">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What if an item is out of stock?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>If an item is out of stock, we'll notify you immediately on WhatsApp. You can choose to:</p>
+            <ul>
+              <li>Wait for restock (we'll notify you when available)</li>
+              <li>Choose an alternative size or color</li>
+              <li>Select a different product</li>
+              <li>Cancel that item from your order</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SHIPPING SECTION -->
+    <div class="faq-section" id="section-shipping" data-category="shipping">
+      <h3 class="faq-section-title">Shipping & Delivery</h3>
+      <p class="faq-section-sub">Delivery times, costs, and tracking information</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="shipping cost delivery fee">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How much does shipping cost?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Shipping costs depend on your location:</p>
+            <ul>
+              <li><strong>Lagos:</strong> ₦2,000 - ₦3,500 (24-48 hours)</li>
+              <li><strong>Other Nigerian cities:</strong> ₦3,500 - ₦5,500 (2-5 days)</li>
+              <li><strong>International:</strong> Calculated based on destination and weight</li>
+              <li><strong>Free shipping:</strong> Orders above ₦200,000 within Nigeria</li>
+            </ul>
+            <p style="margin-top: 12px;">Exact shipping cost will be confirmed when you place your order.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="how long delivery time">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How long does delivery take?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Delivery timelines vary by location:</p>
+            <ul>
+              <li><strong>Lagos:</strong> 24-48 hours</li>
+              <li><strong>Abuja, Port Harcourt, Ibadan:</strong> 2-3 days</li>
+              <li><strong>Other Nigerian states:</strong> 3-5 days</li>
+              <li><strong>International:</strong> 7-14 business days</li>
+            </ul>
+            <p style="margin-top: 12px;">Express delivery is available for Lagos orders at an additional cost.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="track my order tracking number">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How can I track my order?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Once your order ships, we'll send you a tracking number via WhatsApp. You can use this number to track your package in real-time. We also provide updates at each stage of delivery.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="international shipping worldwide">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do you ship internationally?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We ship worldwide. International shipping costs and delivery times vary by destination. Popular destinations include:</p>
+            <ul>
+              <li><strong>USA/Canada:</strong> 7-10 days</li>
+              <li><strong>UK/Europe:</strong> 7-12 days</li>
+              <li><strong>Ghana/South Africa:</strong> 5-7 days</li>
+              <li><strong>UAE/Middle East:</strong> 5-8 days</li>
+            </ul>
+            <p style="margin-top: 12px;">Contact us on WhatsApp for a shipping quote to your specific location.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="package not received lost">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What if I don't receive my package?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>If your package hasn't arrived within the estimated delivery window, contact us immediately on WhatsApp. We'll investigate with our shipping partner and either reship your order or provide a full refund. We stand behind every delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PAYMENTS SECTION -->
+    <div class="faq-section" id="section-payments" data-category="payments">
+      <h3 class="faq-section-title">Payments</h3>
+      <p class="faq-section-sub">Payment methods, security, and billing</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="payment methods accept">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What payment methods do you accept?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>We accept multiple payment methods for your convenience:</p>
+            <ul>
+              <li><strong>Bank Transfer</strong> (All Nigerian banks)</li>
+              <li><strong>POS Payment</strong> (for Lagos deliveries)</li>
+              <li><strong>Cash on Delivery</strong> (Lagos only, with 30% deposit)</li>
+              <li><strong>PayPal</strong> (International orders)</li>
+              <li><strong>Wise/TransferWise</strong> (International orders)</li>
+              <li><strong>Crypto</strong> (USDT, BTC — on request)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="is payment secure safe">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Is my payment secure?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! All transactions are secure. Bank transfers go directly to our verified business account. For international orders, we use PayPal's buyer protection. We never ask for your card details via WhatsApp. If anyone claiming to be from THEEBLACK•LUX asks for sensitive information, please report it to us immediately.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="currency naira usd dollars">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What currency do you charge in?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Our prices are displayed in <strong>Nigerian Naira (₦)</strong>. For international customers, we can provide quotes in USD, GBP, or EUR based on the current exchange rate. Payment in foreign currency is accepted via PayPal or Wise.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="installment payment plan">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do you offer installment payments?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>For orders above ₦500,000, we offer flexible payment plans:</p>
+            <ul>
+              <li><strong>50/50 Plan:</strong> 50% upfront, 50% before shipping</li>
+              <li><strong>3-Part Plan:</strong> 40% upfront, 30% mid-way, 30% before shipping</li>
+            </ul>
+            <p style="margin-top: 12px;">Contact us on WhatsApp to discuss payment plan options for your order.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="refund payment issue">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What if there's a payment issue?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>If you experience any payment issues (failed transfer, double charge, etc.), contact us immediately on WhatsApp with proof of payment. We'll resolve the issue within 24 hours. For bank transfer issues, we work directly with our bank to trace and resolve problems quickly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RETURNS SECTION -->
+    <div class="faq-section" id="section-returns" data-category="returns">
+      <h3 class="faq-section-title">Returns & Exchanges</h3>
+      <p class="faq-section-sub">Our return policy and exchange process</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="return policy days">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What is your return policy?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>We offer a <strong>7-day return policy</strong> from the date of delivery. Items must be:</p>
+            <ul>
+              <li>Unused and in original condition</li>
+              <li>With all tags attached</li>
+              <li>In original packaging</li>
+              <li>Not worn, washed, or altered</li>
+            </ul>
+            <p style="margin-top: 12px;">Custom or personalized items cannot be returned unless defective.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="exchange size different size">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Can I exchange for a different size?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! Size exchanges are free within 7 days of delivery. Simply contact us on WhatsApp with:</p>
+            <ul>
+              <li>Your order number</li>
+              <li>Current size</li>
+              <li>Desired size</li>
+            </ul>
+            <p style="margin-top: 12px;">We'll arrange pickup of the original item and ship the new size. Subject to availability.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="refund money back how long">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How long do refunds take?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Once we receive and inspect the returned item, refunds are processed within:</p>
+            <ul>
+              <li><strong>Bank Transfer:</strong> 24-48 hours</li>
+              <li><strong>PayPal:</strong> 3-5 business days</li>
+              <li><strong>Store Credit:</strong> Immediate</li>
+            </ul>
+            <p style="margin-top: 12px;">Shipping costs are non-refundable unless the item was defective or incorrect.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="damaged defective wrong item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What if I receive a damaged or wrong item?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>We're sorry if this happens! Contact us within <strong>24 hours</strong> of delivery with photos of the issue. We'll:</p>
+            <ul>
+              <li>Send a replacement immediately (free shipping)</li>
+              <li>Or provide a full refund including shipping</li>
+            </ul>
+            <p style="margin-top: 12px;">We take quality seriously and will make it right.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AUTHENTICITY SECTION -->
+    <div class="faq-section" id="section-authenticity" data-category="authenticity">
+      <h3 class="faq-section-title">Product Authenticity</h3>
+      <p class="faq-section-sub">How we ensure every product is 100% genuine</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="authentic genuine real fake original">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Are your products 100% authentic?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p><strong>Yes, absolutely.</strong> Every product at THEEBLACK•LUX is 100% authentic and sourced directly from authorized distributors. We never sell replicas, fakes, or "first copies." Our reputation is built on trust, and we guarantee the authenticity of every item.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="how verify authenticity certificate">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How can I verify authenticity?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Every product comes with:</p>
+            <ul>
+              <li>Original brand tags and labels</li>
+              <li>Authenticity cards (where applicable)</li>
+              <li>Original packaging and box</li>
+              <li>Receipt/invoice from authorized distributor</li>
+            </ul>
+            <p style="margin-top: 12px;">You can also verify sneakers using apps like <strong>CheckCheck</strong> or <strong>Legit App</strong>. We welcome verification!</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="what if fake counterfeit">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What if I suspect a product is fake?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>If you have any concerns about authenticity, contact us immediately. We offer a <strong>100% money-back guarantee</strong> if any product is proven to be non-authentic by a certified authenticator. This guarantee is valid for the lifetime of the product.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="where sourced suppliers">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Where do you source your products?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>We source directly from:</p>
+            <ul>
+              <li>Authorized Nike, Adidas, and Jordan distributors</li>
+              <li>Licensed luxury fashion wholesalers</li>
+              <li>Official brand outlets in USA, UK, and UAE</li>
+            </ul>
+            <p style="margin-top: 12px;">We maintain relationships with verified suppliers to ensure consistent authenticity and quality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SIZING SECTION -->
+    <div class="faq-section" id="section-sizing" data-category="sizing">
+      <h3 class="faq-section-title">Sizing & Fit</h3>
+      <p class="faq-section-sub">Find your perfect fit with our sizing guides</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="size guide chart usa uk nigeria">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Where can I find the size guide?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>We have a comprehensive size guide covering USA, UK, EU, and Nigerian sizing for all categories. <a href="size-guide.html" style="color: var(--gold); text-decoration: underline;">View our complete Size Guide →</a></p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="between sizes which choose">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What if I'm between sizes?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>General recommendations:</p>
+            <ul>
+              <li><strong>Sneakers:</strong> Size up if you have wide feet</li>
+              <li><strong>Hoodies/Tees:</strong> Size up for oversized fit, down for fitted</li>
+              <li><strong>Jeans:</strong> Stick to your usual waist size</li>
+              <li><strong>Suits:</strong> Always size up — easier to tailor down</li>
+            </ul>
+            <p style="margin-top: 12px;">When in doubt, message us on WhatsApp with your measurements and we'll recommend the best size!</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="sneakers run small large true size">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do sneakers run true to size?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>It depends on the brand and model:</p>
+            <ul>
+              <li><strong>Nike Jordans:</strong> Generally true to size</li>
+              <li><strong>Nike Dunks:</strong> True to size</li>
+              <li><strong>Adidas Superstar:</strong> Run slightly large — consider half size down</li>
+              <li><strong>Yeezy:</strong> Run small — size up half size</li>
+            </ul>
+            <p style="margin-top: 12px;">Each product listing includes specific fit notes. Check the description before ordering!</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="measure myself body measurements">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How do I measure myself?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>For accurate measurements:</p>
+            <ul>
+              <li>Use a soft measuring tape</li>
+              <li>Wear fitted clothing (not bulky)</li>
+              <li>Stand naturally — don't pull tape tight</li>
+              <li>Have a friend help if possible</li>
+            </ul>
+            <p style="margin-top: 12px;">See our <a href="size-guide.html" style="color: var(--gold); text-decoration: underline;">Size Guide</a> for detailed measurement instructions for chest, waist, hips, feet, and wrists.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ACCOUNT SECTION -->
+    <div class="faq-section" id="section-account" data-category="account">
+      <h3 class="faq-section-title">Account & Support</h3>
+      <p class="faq-section-sub">Managing your account and getting help</p>
+      
+      <div class="faq-list">
+        <div class="faq-item" data-search="contact customer service support">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How do I contact customer support?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Reach us through:</p>
+            <ul>
+              <li><strong>WhatsApp:</strong> Fastest response (usually within minutes)</li>
+              <li><strong>Instagram:</strong> @theblacklux</li>
+              <li><strong>Email:</strong> support@theblacklux.com</li>
+            </ul>
+            <p style="margin-top: 12px;"><strong>Business Hours:</strong> Monday - Saturday, 9AM - 8PM (WAT)</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="business hours open when">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What are your business hours?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>We're available:</p>
+            <ul>
+              <li><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM (WAT)</li>
+              <li><strong>Saturday:</strong> 10:00 AM - 6:00 PM (WAT)</li>
+              <li><strong>Sunday:</strong> Closed (orders can still be placed)</li>
+            </ul>
+            <p style="margin-top: 12px;">WhatsApp messages sent outside business hours will be responded to first thing the next day.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="whatsapp number contact">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>What's your WhatsApp number?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Our WhatsApp number is available on our homepage. Click the <strong>"Order via WhatsApp"</strong> button when checking out, and you'll be connected directly. You can also save our number for future orders and inquiries.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="bulk order wholesale reseller">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do you offer bulk/wholesale pricing?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer special pricing for:</p>
+            <ul>
+              <li>Bulk orders (5+ items)</li>
+              <li>Resellers and retailers</li>
+              <li>Corporate/uniform orders</li>
+              <li>Event/group purchases</li>
+            </ul>
+            <p style="margin-top: 12px;">Contact us on WhatsApp to discuss bulk pricing and special arrangements.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-search="newsletter updates new arrivals">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How do I stay updated on new arrivals?</h4>
+            <div class="faq-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <p>Stay in the loop:</p>
+            <ul>
+              <li>Follow us on Instagram: <strong>@theblacklux</strong></li>
+              <li>Save our WhatsApp number for broadcast updates</li>
+              <li>Check our website regularly for new drops</li>
+            </ul>
+            <p style="margin-top: 12px;">We post new arrivals weekly and run exclusive sales for our WhatsApp contacts!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- No Results -->
+  <div class="no-results" id="noResults">
+    <div class="emoji">🔍</div>
+    <h3>No matching questions</h3>
+    <p>Try a different search term or browse by category above</p>
+  </div>
+  
+  <!-- Info Cards -->
+  <div class="info-grid">
+    <div class="info-card">
+      <h4><span class="emoji">⚡</span> Quick Response</h4>
+      <p>Our team responds to WhatsApp messages within minutes during business hours. Average response time: under 5 minutes.</p>
+    </div>
+    <div class="info-card">
+      <h4><span class="emoji">🔒</span> Secure Shopping</h4>
+      <p>All transactions are secure. We use verified business accounts and offer buyer protection on international orders.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<div class="cta-section">
+  <h3>Still Have Questions?</h3>
+  <p>Can't find what you're looking for? Our team is here to help. Reach out on WhatsApp for personalized assistance.</p>
+  <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+    <a href="index.html#shop" class="btn btn-primary">Shop Now</a>
+    <a href="https://wa.me/2348012345678" class="btn btn-outline" target="_blank">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">THEEBLACK<span style="color: var(--gold);">•</span>LUX</div>
+      <p>Premium luxury fashion. Exclusive sneakers, clothing, bags, and accessories. Delivering excellence worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="index.html#shop">Footwears</a></li>
+        <li><a href="index.html#shop">Male Clothes</a></li>
+        <li><a href="index.html#shop">Bags</a></li>
+        <li><a href="index.html#shop">Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="size-guide.html">Size Guide</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html#section-shipping">Shipping Info</a></li>
+        <li><a href="faq.html#section-returns">Returns</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Brand</h4>
+      <ul>
+        <li><a href="index.html#about">Our Story</a></li>
+        <li><a href="#">Authenticity</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="https://wa.me/2348012345678">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 THEEBLACK•LUX. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Theme management
+  function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theblacklux_theme', theme);
+    updateThemeIcon();
+  }
+  
+  function toggleTheme() {
+    const current = document.body.getAttribute('data-theme');
+    setTheme(current === 'light' ? 'dark' : 'light');
+  }
+  
+  function updateThemeIcon() {
+    const icon = document.getElementById('themeIcon');
+    const current = document.body.getAttribute('data-theme');
+    if (current === 'dark') {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    } else {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+    }
+  }
+  
+  // FAQ Accordion
+  function toggleFaq(element) {
+    const item = element.parentElement;
+    const wasOpen = item.classList.contains('open');
+    
+    // Close all items in the same list
+    const list = item.closest('.faq-list');
+    list.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    
+    // Toggle current
+    if (!wasOpen) {
+      item.classList.add('open');
+    }
+  }
+  
+  // Section switching
+  function showSection(sectionId, btn) {
+    // Update tabs
+    document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const sections = document.querySelectorAll('.faq-section');
+    const noResults = document.getElementById('noResults');
+    
+    if (sectionId === 'all') {
+      sections.forEach(s => s.classList.add('active'));
+    } else {
+      sections.forEach(s => {
+        if (s.dataset.category === sectionId) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    }
+    
+    noResults.classList.remove('show');
+    
+    // Clear search when switching categories
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchClear').classList.remove('show');
+    
+    // Reset all accordions
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    
+    // Scroll to content
+    document.getElementById('faqContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  
+  // Search functionality
+  function handleSearch(query) {
+    const searchQuery = query.trim().toLowerCase();
+    const clearBtn = document.getElementById('searchClear');
+    const noResults = document.getElementById('noResults');
+    const sections = document.querySelectorAll('.faq-section');
+    
+    if (searchQuery) {
+      clearBtn.classList.add('show');
+      
+      // Reset category tabs to "All"
+      document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.faq-tab').classList.add('active');
+      
+      let totalVisible = 0;
+      
+      sections.forEach(section => {
+        section.classList.add('active');
+        const items = section.querySelectorAll('.faq-item');
+        let sectionHasVisible = false;
+        
+        items.forEach(item => {
+          const searchData = (item.dataset.search || '').toLowerCase();
+          const questionText = item.querySelector('h4').textContent.toLowerCase();
+          const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+          const combinedText = searchData + ' ' + questionText + ' ' + answerText;
+          
+          if (combinedText.includes(searchQuery)) {
+            item.style.display = 'block';
+            sectionHasVisible = true;
+            totalVisible++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        if (!sectionHasVisible) {
+          section.style.display = 'none';
+        } else {
+          section.style.display = 'block';
+        }
+      });
+      
+      if (totalVisible === 0) {
+        noResults.classList.add('show');
+      } else {
+        noResults.classList.remove('show');
+      }
+    } else {
+      clearBtn.classList.remove('show');
+      noResults.classList.remove('show');
+      
+      // Show all
+      sections.forEach(section => {
+        section.style.display = 'block';
+        section.querySelectorAll('.faq-item').forEach(item => {
+          item.style.display = 'block';
+        });
+      });
+    }
+  }
+  
+  function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    handleSearch('');
+  }
+  
+  // Init
+  const storedTheme = localStorage.getItem('theblacklux_theme') || 'light';
+  setTheme(storedTheme);
+</script>
+</body>
+</html>
