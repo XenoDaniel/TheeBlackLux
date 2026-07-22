@@ -1729,8 +1729,10 @@
   const productsQuery = query(collection(db, "products"), orderBy("createdAt", "desc"));
   
   onSnapshot(productsQuery, (snapshot) => {
+    console.log("1. Attempting to fetch products from Firebase...");
     const firebaseProducts = [];
     snapshot.forEach((doc) => {
+      console.log("2. Data received!", doc.data());
       firebaseProducts.push({ id: doc.id, ...doc.data() });
     });
     
