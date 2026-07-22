@@ -1240,7 +1240,7 @@
     <button class="filter-btn" data-filter="bags">Bags</button>
   </div>
   <div class="sub-filter-bar" id="subFilterBar"></div>
-  <div class="product-grid" id="productGrid"></div>
+  <div class="product-grid" id="storefront-product-grid"></div>
 </section>
 
 <!-- ========== FOOTER SECTION ========== -->
@@ -1343,20 +1343,7 @@
     bags: { label: 'Unisex Bags', subcats: ['Cross Bags', 'Backpacks', 'Travelling Bags'] }
   };
   
-  const DEFAULT_PRODUCTS = [
-    { id: 'p1', name: 'Nike Air Jordan 1 Retro High', category: 'footwear', subcategory: 'Sneakers', price: 185000, oldPrice: 225000, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1a050a0b8-2fbe-401f-aa84-ab2c335312b7.png', badge: 'Sale', description: 'Iconic Air Jordan 1 in premium black and gold leather. Features classic Nike Air cushioning and timeless silhouette. 100% authentic.', sizes: ['38', '39', '40', '41', '42', '43', '44', '45'] },
-    { id: 'p2', name: 'Adidas Superstar Premium', category: 'footwear', subcategory: 'Sneakers', price: 125000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/111c7898c-41a8-418d-baa6-aaa1ab90d562.png', badge: 'New', description: 'Classic Adidas Superstar reimagined in luxury black leather with gold three-stripe detailing.', sizes: ['38', '39', '40', '41', '42', '43', '44'] },
-    { id: 'p3', name: 'Luxury Black Hoodie', category: 'clothing', subcategory: 'Hoodies', price: 95000, oldPrice: 120000, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/12567c4c0-e538-4376-8c0e-5e1e457825e3.png', badge: 'Sale', description: 'Premium heavyweight cotton hoodie with gold embroidered logo. Oversized fit with kangaroo pocket.', sizes: ['S', 'M', 'L', 'XL', 'XXL'] },
-    { id: 'p4', name: 'Baggy Street Jeans', category: 'clothing', subcategory: 'Baggy Jeans', price: 110000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1e410bd9a-da8f-403b-a5d3-3da6de3d6857.png', badge: 'Limited', description: 'Premium black baggy denim with stretch comfort. Relaxed fit with gold hardware and signature stitching.', sizes: ['28', '30', '32', '34', '36', '38'] },
-    { id: 'p5', name: 'Gold Trim Luxury Tee', category: 'clothing', subcategory: 'Tees', price: 55000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1a3668aa6-e7b9-4d38-bb09-98a782d41c7e.png', badge: 'New', description: 'Premium cotton t-shirt with gold trim details on collar, sleeves, and hem. Embossed logo on chest.', sizes: ['S', 'M', 'L', 'XL', 'XXL'] },
-    { id: 'p6', name: 'Leather Cross Bag', category: 'bags', subcategory: 'Cross Bags', price: 145000, oldPrice: 180000, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/15609dba8-91f7-4998-a2b4-a3c3287709e7.png', badge: 'Sale', description: 'Premium leather cross bag with adjustable strap. Multiple compartments for organization.', sizes: ['One Size'] },
-    { id: 'p7', name: 'Gold Chain Necklace', category: 'accessories', subcategory: 'Neckpieces', price: 85000, oldPrice: 100000, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1392b2f18-a76f-45a5-9ba0-48fa151a0045.png', badge: 'Sale', description: '18k gold-plated chain necklace with diamond-encrusted pendant. Adjustable length with secure clasp.', sizes: ['18"', '20"', '22"', '24"'] },
-    { id: 'p8', name: 'Luxury Wrist Watch', category: 'accessories', subcategory: 'Wrist Watches', price: 295000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1392b2f18-a76f-45a5-9ba0-48fa151a0045.png', badge: 'Premium', description: 'Swiss movement luxury watch with gold case and leather strap. Sapphire crystal glass.', sizes: ['One Size'] },
-    { id: 'p9', name: 'Executive Corporate Shoes', category: 'footwear', subcategory: 'Corporate Shoes', price: 210000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1a050a0b8-2fbe-401f-aa84-ab2c335312b7.png', badge: 'New', description: 'Handcrafted Italian leather oxford shoes. Perfect for the modern professional.', sizes: ['39', '40', '41', '42', '43', '44', '45'] },
-    { id: 'p10', name: 'Premium Backpack', category: 'bags', subcategory: 'Backpacks', price: 120000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/15609dba8-91f7-4998-a2b4-a3c3287709e7.png', badge: 'New', description: 'Luxury leather backpack with gold hardware. Multiple compartments with laptop sleeve.', sizes: ['One Size'] },
-    { id: 'p11', name: 'Designer Belt', category: 'accessories', subcategory: 'Belts', price: 62000, oldPrice: 78000, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1392b2f18-a76f-45a5-9ba0-48fa151a0045.png', badge: 'Sale', description: 'Genuine leather belt with gold buckle. Perfect for both casual and formal wear.', sizes: ['30', '32', '34', '36', '38', '40'] },
-    { id: 'p12', name: 'Luxury Travelling Bag', category: 'bags', subcategory: 'Travelling Bags', price: 250000, oldPrice: null, image: 'https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/15609dba8-91f7-4998-a2b4-a3c3287709e7.png', badge: 'Premium', description: 'Premium leather duffle bag with gold hardware. Spacious interior with multiple pockets.', sizes: ['Medium', 'Large'] }
-  ];
+  const DEFAULT_PRODUCTS = [];
   
   let products = [], cart = [];
   let currentFilter = 'all', currentSubFilter = 'all';
@@ -1515,7 +1502,7 @@
   // ========== PRODUCTS RENDERING ==========
   // ============================================================
   function renderProducts() {
-    const grid = document.getElementById('productGrid');
+    const grid = document.getElementById('storefront-product-grid');
     const filtered = getFilteredProducts();
     
     if (filtered.length === 0) {
