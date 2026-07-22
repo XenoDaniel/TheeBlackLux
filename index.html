@@ -1712,5 +1712,55 @@
   
   init();
 </script>
+
+<!-- Firebase Web SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  // Your same Firebase configuration object
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "theeblacklux.firebaseapp.com",
+    projectId: "theeblacklux",
+    storageBucket: "theeblacklux.firebasestorage.app",
+    messagingSenderId: "571101519126",
+    appId: "1:571101519126:web:432140d7275c32db344437",
+    measurementId: "G-6HE1BZQ3VZ"
+  };
+
+  // Initialize Firebase and Firestore
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Function to pull products from Firestore and render them on the store page
+  function loadProducts(db) {
+    const container = document.getElementById('products-container'); // Change to your HTML grid ID
+
+    // onSnapshot updates your store automatically whenever you edit/add a product in admin!
+    onSnapshot(collection(db, "products"), (snapshot) => {
+      container.innerHTML = ""; // Clear existing static/demo cards
+
+      snapshot.forEach((doc) => {
+        const product = doc.data();
+        
+        // Build your HTML product card dynamically
+        const card = `
+          <div class="product-card">
+            <img src="${product.imageUrl || 'placeholder.jpg'}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p class="price">$${product.price}</p>
+            <button onclick="addToCart('${doc.id}')">Add to Cart</button>
+          </div>
+        `;
+
+        container.innerHTML += card;
+      });
+    });
+  }
+
+  // Load products when the page opens
+  loadProducts(db);
+</script>
 </body>
 </html>
