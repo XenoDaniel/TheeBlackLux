@@ -1054,6 +1054,8 @@
     bottom: 90px;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    visibility: hidden;
     background: var(--gold);
     color: var(--black);
     padding: 12px 24px;
@@ -1061,14 +1063,14 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
     z-index: 600;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
     font-weight: 600;
     border-radius: var(--radius-md);
     box-shadow: 0 8px 32px var(--shadow);
     white-space: nowrap;
   }
   
-  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; }
   
   .overlay {
     position: fixed;
@@ -1394,11 +1396,21 @@
     return '₦' + amount.toLocaleString('en-NG', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
   }
   
+  let toastTimer = null;
+
   function showToast(msg) {
     const toast = document.getElementById('toast');
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
+
+    if (toastTimer) {
+      clearTimeout(toastTimer);
+    }
+
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+      toastTimer = null;
+    }, 2500);
   }
   
   function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
