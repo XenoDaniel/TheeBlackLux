@@ -1197,28 +1197,28 @@
   </div>
   <div class="cat-grid">
     <div class="cat-card" onclick="filterCategory('clothing')">
-      <img src="https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1a91a88f1-7083-4bd1-867c-ebcf809430f4.png" alt="Male Clothes">
+      <img src="images/collections-clothing.jpg" alt="Male Clothes">
       <div class="cat-label">
         <span>01 — Menswear</span>
         <h3>Male Clothes</h3>
       </div>
     </div>
     <div class="cat-card" onclick="filterCategory('footwear')">
-      <img src="https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1306d8a24-6789-47de-94f2-4fda39f49cf6.png" alt="Footwear">
+      <img src="images/collections-footwear.png" alt="Footwear">
       <div class="cat-label">
         <span>02 — Unisex</span>
         <h3>Footwears</h3>
       </div>
     </div>
     <div class="cat-card" onclick="filterCategory('accessories')">
-      <img src="https://image.qwenlm.ai/public_source/30bea21f-247f-4dc5-932e-3d89f1993227/1392b2f18-a76f-45a5-9ba0-48fa151a0045.png" alt="Accessories">
+      <img src="images/collections-accessories.jpg" alt="Accessories">
       <div class="cat-label">
         <span>03 — Unisex</span>
         <h3>Accessories</h3>
       </div>
     </div>
     <div class="cat-card" onclick="filterCategory('bags')">
-      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=700&fit=crop" alt="Bags">
+      <img src="images/collections-bags.jpg" alt="Bags">
       <div class="cat-label">
         <span>04 — Unisex</span>
         <h3>Bags</h3>
@@ -1252,7 +1252,7 @@
       <div class="logo">THEEBLACK<span style="color: var(--gold);">•</span>LUX</div>
       <p>Premium luxury fashion. Exclusive sneakers, clothing, bags, and accessories. Delivering excellence worldwide.</p>
       <p style="margin-top: 12px; font-size: 12px;">
-         <a href="tel:08139910002" style="color: var(--gold); text-decoration: none;">0813 991 0002</a><br>
+         <a href="tel:2348139910002" style="color: var(--gold); text-decoration: none;">2348 139 910 002</a><br>
         💬 <a href="https://wa.me/2348139910002" target="_blank" style="color: var(--gold); text-decoration: none;">WhatsApp Us</a>
       </p>
     </div>
@@ -1280,7 +1280,7 @@
         <li><a href="size-guide.html">Size Guide</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="https://wa.me/2348139910002" target="_blank">WhatsApp</a></li>
-        <li><a href="tel:08139910002">Call Us</a></li>
+        <li><a href="tel:2348139910002">Call Us</a></li>
       </ul>
     </div>
   </div>
@@ -1350,7 +1350,7 @@
   let products = [], cart = [];
   let currentFilter = 'all', currentSubFilter = 'all';
   let currentProduct = null, selectedSize = null;
-  let currentTheme = localStorage.getItem('theblacklux_theme') || 'light';
+  let currentTheme = (localStorage.getItem('theblacklux_theme') || 'light').toLowerCase();
   let currentSearchQuery = '';
   let searchExpanded = false;
   
@@ -1413,6 +1413,13 @@
     }, 2500);
   }
   
+  // Bridge function: safely receive live product data from isolated modules
+  window.setLiveProducts = function(firebaseData) {
+    console.log('setLiveProducts called with', firebaseData);
+    products = firebaseData;
+    renderProducts();
+  };
+  
   function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   
   // ============================================================
@@ -1425,18 +1432,23 @@
     updateThemeIcon();
   }
   
-  function toggleTheme() { 
-    setTheme(currentTheme === 'light' ? 'dark' : 'light'); 
+  function toggleTheme() {
+    setTheme(currentTheme === 'light' ? 'dark' : 'light');
   }
   
   function updateThemeIcon() {
     const icon = document.getElementById('themeIcon');
+    if (!icon) return;
     if (currentTheme === 'dark') {
       icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
     } else {
       icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
     }
   }
+  
+  window.toggleTheme = toggleTheme;
+  window.setTheme = setTheme;
+  window.updateThemeIcon = updateThemeIcon;
   
   // ============================================================
   // ========== INITIALIZATION ==========
@@ -1762,12 +1774,8 @@
       };
     });
 
-    // 2. Update global state so search, filters, and modals stay interactive
-    window.products = firebaseProducts;
-    products = firebaseProducts;
-
-    // 3. Trigger full grid render with current active filters
-    renderProducts();
+    // Safely pass the live Firebase data back to your main script
+    window.setLiveProducts(firebaseProducts);
   });
 </script>
 </body>
