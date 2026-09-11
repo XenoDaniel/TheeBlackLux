@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" width="400" height="60">
+  <style>
+    .t { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 36px; fill: #d4af37; }
+    .dot { fill: #d4af37; }
+  </style>
+  <text x="0" y="40" class="t">THEEBLACK<tspan class="dot">•</tspan>LUX</text>
+</svg>

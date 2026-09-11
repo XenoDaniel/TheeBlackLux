@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/fontsource/css/playfair-display@latest/index.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/index.css" rel="stylesheet">
+<link rel="icon" href="images/logo.jpg" type="image/jpeg">
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/logo.jpg">
 <script>
   // Prevent theme flash - apply saved theme immediately before page renders
   const storedTheme = localStorage.getItem('theblacklux_theme') || 'light';
@@ -139,6 +142,27 @@
     transition: all 0.3s;
     white-space: nowrap;
     flex-shrink: 0;
+  }
+
+  .logo { display: flex; align-items: center; gap: 8px; }
+  .site-logo { height: 48px; width: auto; display: inline-block; background: transparent; mix-blend-mode: multiply; }
+  /* Blend adjustments per theme to better integrate non-transparent logos */
+  [data-theme="dark"] .site-logo { mix-blend-mode: screen; filter: invert(1) brightness(1.05) saturate(1.1); }
+  [data-theme="light"] .site-logo { mix-blend-mode: multiply; filter: none; }
+  .logo-text { font-size: 16px; font-weight: 700; }
+
+  /* Make logo more prominent on larger screens */
+  @media (min-width: 768px) {
+    .site-logo { height: 56px; }
+    .logo-text { font-size: 20px; }
+  }
+
+  /* Mobile: center the header logo and ensure controls remain accessible */
+  @media (max-width: 767px) {
+    nav { padding: 10px 12px; display: flex; align-items: center; position: relative; }
+    nav .logo { margin: 0 auto; }
+    nav .nav-actions { position: absolute; right: 12px; top: 10px; }
+    nav .back-btn { position: absolute; left: 12px; top: 10px; }
   }
   
   .logo:hover { transform: scale(1.05); }
@@ -1139,7 +1163,10 @@
 
 <!-- ========== NAVBAR SECTION ========== -->
 <nav>
-  <div class="logo" onclick="scrollToTop()">THEEBLACK<span>•</span>LUX</div>
+  <div class="logo" onclick="scrollToTop()">
+    <img src="images/logo.jpg" alt="THEEBLACK•LUX" class="site-logo">
+    <span class="logo-text">THEEBLACK<span>•</span>LUX</span>
+  </div>
   <div class="nav-actions">
     <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
       <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
