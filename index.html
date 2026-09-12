@@ -1192,7 +1192,7 @@
       <path d="M18 6L6 18M6 6l12 12"/>
     </svg>
   </button>
-  <input type="text" class="floating-search-input" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
+  <input type="search" inputmode="search" enterkeyhint="search" class="floating-search-input" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
   <button class="floating-search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -1747,6 +1747,19 @@
       if (document.getElementById('cartDrawer').classList.contains('open')) toggleCart();
     }
   });
+
+  // Ensure mobile keyboards show a "Search" action and hide the keyboard on submit
+  (function() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchInput.blur();
+        handleSearch(searchInput.value);
+      }
+    });
+  })();
   
   init();
 </script>

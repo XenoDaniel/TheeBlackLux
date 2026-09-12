@@ -797,7 +797,7 @@
     <circle cx="11" cy="11" r="8"/>
     <path d="M21 21l-4.35-4.35"/>
   </svg>
-  <input type="text" class="search-input" id="searchInput" placeholder="Search questions..." oninput="handleSearch(this.value)">
+  <input type="search" inputmode="search" enterkeyhint="search" class="search-input" id="searchInput" placeholder="Search questions..." oninput="handleSearch(this.value)">
   <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -1605,6 +1605,19 @@
     document.getElementById('searchInput').value = '';
     handleSearch('');
   }
+
+  // Mobile: hide virtual keyboard and trigger search when user presses Enter/Search
+  (function() {
+    const faqSearch = document.getElementById('searchInput');
+    if (!faqSearch) return;
+    faqSearch.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        faqSearch.blur();
+        handleSearch(faqSearch.value);
+      }
+    });
+  })();
   
   // Init
   const storedTheme = localStorage.getItem('theblacklux_theme') || 'light';
