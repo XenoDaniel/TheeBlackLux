@@ -159,10 +159,12 @@
 
   /* Mobile: center the header logo and ensure controls remain accessible */
   @media (max-width: 767px) {
-    nav { padding: 10px 12px; display: flex; align-items: center; position: relative; }
+    nav { padding: 10px 12px; display: flex; align-items: center; position: fixed; top: 12px; left: 12px; right: 12px; margin: 0; z-index: 110; }
     nav .logo { margin: 0 auto; }
     nav .nav-actions { position: absolute; right: 12px; top: 10px; }
     nav .back-btn { position: absolute; left: 12px; top: 10px; }
+    /* Ensure page content is not hidden behind the fixed nav on mobile */
+    body { padding-top: 84px; }
   }
   
   .logo:hover { transform: scale(1.05); }
@@ -1192,7 +1194,7 @@
       <path d="M18 6L6 18M6 6l12 12"/>
     </svg>
   </button>
-  <input type="search" inputmode="search" enterkeyhint="search" class="floating-search-input" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
+  <input type="text" class="floating-search-input" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
   <button class="floating-search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -1214,7 +1216,6 @@
     </div>
   </div>
 </section>
-
 <!-- ========== CATEGORIES SECTION ========== -->
 <section class="categories" id="collections">
   <div class="section-header">
@@ -1748,19 +1749,6 @@
     }
   });
 
-  // Ensure mobile keyboards show a "Search" action and hide the keyboard on submit
-  (function() {
-    const searchInput = document.getElementById('searchInput');
-    if (!searchInput) return;
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        searchInput.blur();
-        handleSearch(searchInput.value);
-      }
-    });
-  })();
-  
   init();
 </script>
 

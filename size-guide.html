@@ -135,10 +135,11 @@
   [data-theme="light"] .site-logo { mix-blend-mode: multiply; filter: none; }
   .logo-text { font-size: 16px; }
   @media (max-width: 767px) {
-    nav { padding: 10px 12px; display: flex; align-items: center; position: relative; }
+    nav { padding: 10px 12px; display: flex; align-items: center; position: fixed; top: 12px; left: 12px; right: 12px; margin: 0; z-index: 110; }
     nav .logo { margin: 0 auto; }
     nav .nav-actions { position: absolute; right: 12px; top: 10px; }
     nav .back-btn { position: absolute; left: 12px; top: 10px; }
+    body { padding-top: 84px; }
   }
   
   .logo:hover { transform: scale(1.05); }
