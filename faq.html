@@ -132,8 +132,8 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .logo { display: flex; align-items: center; gap: 8px; max-width: calc(100% - 140px); justify-content: center; }
-  .logo-text { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+  .logo { display: flex; align-items: center; gap: 6px; max-width: calc(100% - 100px); justify-content: center; }
+  .logo-text { display: block; font-size: clamp(12px, 4.5vw, 18px); line-height: 1; }
   .site-logo { height: 48px; width: auto; display: inline-block; background: transparent; mix-blend-mode: multiply; }
   [data-theme="dark"] .site-logo { mix-blend-mode: screen; filter: invert(1) brightness(1.05) saturate(1.1); }
   [data-theme="light"] .site-logo { mix-blend-mode: multiply; filter: none; }
@@ -144,7 +144,9 @@
     nav .nav-actions { position: absolute; right: 12px; top: 10px; }
     nav .back-btn { position: absolute; left: 12px; top: 10px; }
     body { padding-top: 84px; }
-    .logo-text { font-size: 14px; }
+    .site-logo { height: 36px; }
+    .logo { gap: 6px; }
+    .logo-text { font-size: clamp(12px, 4.5vw, 16px); }
   }
   
   .logo:hover { transform: scale(1.05); }

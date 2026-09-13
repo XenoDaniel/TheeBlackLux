@@ -144,8 +144,8 @@
     flex-shrink: 0;
   }
 
-  .logo { display: flex; align-items: center; gap: 8px; max-width: calc(100% - 140px); justify-content: center; }
-  .logo-text { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+  .logo { display: flex; align-items: center; gap: 6px; max-width: calc(100% - 100px); justify-content: center; }
+  .logo-text { display: block; font-size: clamp(12px, 4.5vw, 18px); line-height: 1; }
   .site-logo { height: 48px; width: auto; display: inline-block; background: transparent; mix-blend-mode: multiply; }
   /* Blend adjustments per theme to better integrate non-transparent logos */
   [data-theme="dark"] .site-logo { mix-blend-mode: screen; filter: invert(1) brightness(1.05) saturate(1.1); }
@@ -166,8 +166,9 @@
     nav .back-btn { position: absolute; left: 12px; top: 10px; }
     /* Ensure page content is not hidden behind the fixed nav on mobile */
     body { padding-top: 84px; }
-    /* Reduce logo text size so it fits fully on small screens */
-    .logo-text { font-size: 14px; }
+    .site-logo { height: 36px; }
+    .logo { gap: 6px; }
+    .logo-text { font-size: clamp(12px, 4.5vw, 16px); }
   }
   
   .logo:hover { transform: scale(1.05); }
